@@ -6,7 +6,7 @@
 ## 前端路漫漫，慢慢修
 
 ### 学习资料站
-
+* **[如何高效利用GitHub](http://www.yangzhiping.com/tech/github.html)**
 * **[前端框架、资料汇集](http://www.bootcss.com/)**
 * **[Headroom.js](http://www.bootcss.com/p/headroom.js/)**--- 为页面顶部多留些空间。在不需要页头时将其隐藏。
 * **[iCheck](http://www.bootcss.com/p/icheck/)**---增强复选框和单选按钮
