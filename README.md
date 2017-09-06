@@ -10,6 +10,7 @@
 * **[Web开发者指南](https://developer.mozilla.org/zh-CN/docs/Web/Guide)**
 * **[教程](https://developer.mozilla.org/zh-CN/docs/Web/Tutorials)**
 * **[JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)**
+* **[怎么学 JavaScript？](http://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651552568&idx=1&sn=2c85a858b0a28d1c256354312f535f13&chksm=8025acf9b75225efea70a70b3d753bd53ec596f2d90371d960d5643e8c5946cea79f355c7513&mpshare=1&scene=23&srcid=0906yyeOcwhCqvE1DrkomSbR#rd)**
 * **[W3school](http://www.w3school.com.cn/)**
 * **[W3C](https://www.w3.org/)**
 * **[如何高效利用GitHub](http://www.yangzhiping.com/tech/github.html)**
