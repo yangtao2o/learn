@@ -18,6 +18,7 @@
 * **[Headroom.js](http://www.bootcss.com/p/headroom.js/)**--- 为页面顶部多留些空间。在不需要页头时将其隐藏。
 * **[iCheck](http://www.bootcss.com/p/icheck/)**---增强复选框和单选按钮
 * **[Git - 简易指南](http://www.bootcss.com/p/git-guide/)**
+* **[全面理解Git](https://zhuanlan.zhihu.com/p/24081900)**
 * **[Grunt](https://gruntjs.com/)**---项目构建工具
 * **[Gulp](http://www.gulpjs.com.cn/)**---用自动化构建工具增强你的工作流程！
 * **[Webpack](https://webpack.bootcss.com/)**---前端资源模块化管理和打包工具
