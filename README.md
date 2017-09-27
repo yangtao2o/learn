@@ -33,6 +33,11 @@
 
 * **[JavaScript经典实例](https://github.com/yizhehu/learninglog/wiki/JavaScript经典实例)**
 
+### 个人手记集锦
+
+* **[慕课网手记](http://www.imooc.com/u/3120512/articles)**
+* **[前端网笔记](http://www.qdfuns.com/house/32286/note)**
+
 ### 学习日志
 * **[201708](https://github.com/yizhehu/learninglog/wiki/201708)**
 * **[201709](https://github.com/yizhehu/learninglog/wiki/201709)**
