@@ -29,29 +29,9 @@
 
 * **正则表达式特殊字符**
 
-| 字符 | 匹配  | 例子 |
-| -----  | ----- | ----- |
-| ^ | 匹配输入的开头     | /^This/ 匹配This is... |
-| $ | 匹配输入的结束     | /end$/ 匹配This is the end |
-| * | 匹配0次或多次     | /se*/ 匹配s seeee或se |
-| ? | 匹配0次或1次      | /ap?/ 匹配apple and and |
-| + | 匹配1次或多次     | /ap+/ 匹配apple 但是不匹配and |
-| {n} | 严格匹配n次     | /ap{2}/ 严格匹配apple 但是不匹配apie |
-| {n,} | 匹配n次或多次  | /ap{2,}/ 匹配apple中的p，但是不匹配apie中的p |
-| {n,m} | 至少匹配n次，之多匹配m<br>除换行以外的任何字符 | /ap{2,4}/ 匹配apppppple中的4个p<br>/a.e/ 匹配ape和axe |
-| [...] | 方括号中的任何字符 | /a[px]e/ 匹配ape axe 但是不匹配apxe |
-| [^...] | 除了方括号以外的任何字符 | /a[^px]/ 匹配ale 但是不匹配ape axe  |
-| \b  | 匹配单词边界 | /\bno/ 匹配nono中的第一个no |
-| \B | 匹配非单词边界 | /\Bno/ 匹配nono中的第二个no |
-| \d | 数字0到9 | /\d{3}/ 匹配Now in 123 中的123 |
-| \D | 匹配任何非数字字符 | /\D{2,4}/ 匹配Now in 123 中的Now in |
-| \w | 匹配任何单词字符（字母、数组和下划线 | /\w/ 匹配javaScript中的j |
-| \W | 匹配任何非单词字符（非字母、数组和下划线） | /\W/ 匹配100%中的% |
-| \n | 匹配一个换行 |  |
-| \s | 一个单个的空白字符 |  |
-| \S | 一个单个的非空白字符 |  |
-| \t | 一个制表符 |  |
-| (x) | 捕获括号 | 记住匹配的字符  |
+### 学习书籍
+
+* **[JavaScript经典实例](https://github.com/yizhehu/learninglog/wiki/JavaScript经典实例)**
 
 ### 学习日志
 * **[201708](https://github.com/yizhehu/learninglog/wiki/201708)**
