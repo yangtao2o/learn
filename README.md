@@ -27,7 +27,7 @@
 
 ### 快速查找区
 
-* **正则表达式特殊字符**
+* **[正则表达式特殊字符](https://github.com/yizhehu/learninglog/wiki/JavaScript经典实例#regexp)**
 
 ### 学习书籍
 
