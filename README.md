@@ -32,7 +32,7 @@
 ### 学习书籍
 
 * **[JavaScript经典实例](https://github.com/yizhehu/learninglog/wiki/JavaScript经典实例)**
-    * 慕课网手记[归纳《JavaScript经典实例》之JS不只是简单的构件块](http://www.imooc.com/article/20555)
+    * 慕课网手记[归纳《JavaScript经典实例》之JS不只是简单的构件块](http://www.imooc.com/article/20555)
 
 ### 个人手记集锦
 
