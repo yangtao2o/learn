@@ -39,11 +39,11 @@
 
 ### 快速查找区
 
-* **[正则表达式特殊字符](https://github.com/yizhehu/learninglog/wiki/JavaScript经典实例#regexp)**
+* **[正则表达式特殊字符](https://github.com/yangtao2o/learninglog/wiki/JavaScript经典实例#regexp)**
 
 ### 学习书籍
 
-* **[JavaScript经典实例](https://github.com/yizhehu/learninglog/wiki/JavaScript经典实例)**
+* **[JavaScript经典实例](https://github.com/yangtao2o/learninglog/wiki/JavaScript经典实例)**
     * 慕课网手记[归纳《JavaScript经典实例》之JS不只是简单的构件块](http://www.imooc.com/article/20555)
 
 ### 个人手记集锦
@@ -52,7 +52,7 @@
 * **[前端网笔记](http://www.qdfuns.com/house/32286/note)**
 
 ### 学习日志
-* **[201708](https://github.com/yizhehu/learninglog/wiki/201708)**
-* **[201709](https://github.com/yizhehu/learninglog/wiki/201709)**
-* **[201710](https://github.com/yizhehu/learninglog/wiki/201710)**
+* **[201708](https://github.com/yangtao2o/learninglog/wiki/201708)**
+* **[201709](https://github.com/yangtao2o/learninglog/wiki/201709)**
+* **[201710](https://github.com/yangtao2o/learninglog/wiki/201710)**
 
