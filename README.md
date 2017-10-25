@@ -44,8 +44,9 @@
 ### 学习书籍
 
 * **[JavaScript经典实例](https://github.com/yangtao2o/learninglog/wiki/JavaScript经典实例)**
-    * 慕课网手记[归纳《JavaScript经典实例》之JS不只是简单的构件块](http://www.imooc.com/article/20555)
-
+    * 慕课网手记[归纳《JavaScript经典实例》之JS不只是简单的构件块](http://www.imooc.com/article/20555)
+* **[FreeCodeCamp](https://freecodecamp.cn/map-aside#nested-collapseBasicAlgorithmScripting)**
+    * 慕课网发布手记 [JavaScript算法初级练习](http://www.imooc.com/article/20814)
 ### 个人手记集锦
 
 * **[慕课网手记](http://www.imooc.com/u/3120512/articles)**
