@@ -27,6 +27,7 @@
 * **[Three.js](http://www.hewebgl.com/article/articledir/1)**--- 是JavaScript编写的WebGL第三方库。提供了非常多的3D显示功能。
 
 #### 开发工具
+* **[高质量的Git中文教程](https://github.com/geeeeeeeeek/git-recipes)**---该Wiki的编者非常认真细致地总结和翻译了许多Github知识和技巧
 * **[如何高效利用GitHub](http://www.yangzhiping.com/tech/github.html)**
 * **[Git - 简易指南](http://www.bootcss.com/p/git-guide/)**
 * **[全面理解Git](https://zhuanlan.zhihu.com/p/24081900)**
