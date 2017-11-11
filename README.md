@@ -35,6 +35,7 @@
 * **[Grunt](https://gruntjs.com/)**---项目构建工具
 * **[Gulp](http://www.gulpjs.com.cn/)**---用自动化构建工具增强你的工作流程！
 * **[Webpack](https://webpack.bootcss.com/)**---前端资源模块化管理和打包工具
+* **[入门Webpack，看这篇就够了](http://www.jianshu.com/p/42e11515c10f)**
 
 #### 网络
 * **[HTTPS 工作原理和 TCP 握手机制](http://blog.jobbole.com/105633/)**
