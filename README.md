@@ -8,6 +8,7 @@
 ### 学习资料站
 
 #### 网站
+* **[(2017)个人分享--web前端学习资源分享](https://juejin.im/post/5a0c1956f265da430a501f51)**
 * **[学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn)**
 * **[Web开发者指南](https://developer.mozilla.org/zh-CN/docs/Web/Guide)**
 * **[教程](https://developer.mozilla.org/zh-CN/docs/Web/Tutorials)**
@@ -57,7 +58,7 @@
 * **[前端网笔记](http://www.qdfuns.com/house/32286/note)**
 
 ### 学习日志
-
+* **[201712](https://github.com/yangtao2o/learninglog/wiki/201712)**
 * **[201711](https://github.com/yangtao2o/learninglog/wiki/201711)**
 * **[201710](https://github.com/yangtao2o/learninglog/wiki/201710)**
 * **[201709](https://github.com/yangtao2o/learninglog/wiki/201709)**
