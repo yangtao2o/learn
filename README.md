@@ -58,6 +58,7 @@
 * **[前端网笔记](http://www.qdfuns.com/house/32286/note)**
 
 ### 学习日志
+* **[201801](https://github.com/yangtao2o/learninglog/wiki/201801)**
 * **[201712](https://github.com/yangtao2o/learninglog/wiki/201712)**
 * **[201711](https://github.com/yangtao2o/learninglog/wiki/201711)**
 * **[201710](https://github.com/yangtao2o/learninglog/wiki/201710)**
