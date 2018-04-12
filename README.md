@@ -38,6 +38,10 @@
 * **[Webpack](https://webpack.bootcss.com/)**---前端资源模块化管理和打包工具
 * **[入门Webpack，看这篇就够了](http://www.jianshu.com/p/42e11515c10f)**
 
+#### 博客
+* **[张鑫旭](http://www.zhangxinxu.com/)**
+* **[廖雪峰的官方网站](https://www.liaoxuefeng.com/)**
+* **[阮一峰的网络日志之JavaScript](http://www.ruanyifeng.com/blog/javascript/)**
 #### 网络
 * **[HTTPS 工作原理和 TCP 握手机制](http://blog.jobbole.com/105633/)**
 
