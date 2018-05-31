@@ -6,7 +6,7 @@
 ## 前端路漫漫，慢慢修
 
 ### 学习资料站
-
+> 201805之后将整理在个人网站上：[istaotao.com](http://istaotao.com/)
 #### 网站
 * **[(2017)个人分享--web前端学习资源分享](https://juejin.im/post/5a0c1956f265da430a501f51)**
 * **[学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn)**
@@ -24,6 +24,7 @@
 
 #### 框架、库
 * **[前端框架、资料汇集](http://www.bootcss.com/)**
+* **[Lodash](https://www.lodashjs.com/)**--- 是一个一致性、模块化、高性能的 JavaScript 实用工具库。
 * **[Headroom.js](http://www.bootcss.com/p/headroom.js/)**--- 为页面顶部多留些空间。在不需要页头时将其隐藏。
 * **[iCheck](http://www.bootcss.com/p/icheck/)**---增强复选框和单选按钮
 * **[Three.js](http://www.hewebgl.com/article/articledir/1)**--- 是JavaScript编写的WebGL第三方库。提供了非常多的3D显示功能。
