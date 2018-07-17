@@ -60,7 +60,7 @@
 ### 个人手记集锦
 
 * **[慕课网手记](http://www.imooc.com/u/3120512/articles)**
-* **[前端网笔记](http://www.qdfuns.com/house/32286/note)**
+* **[前端网笔记](https://www.qdfuns.com/u/32286/works)**
 * **[掘金分享](https://juejin.im/user/58b67dd58fd9c50061238e38/shares)**
 * **[segmentfault笔记](https://segmentfault.com/u/taoboy/notes)**
 
