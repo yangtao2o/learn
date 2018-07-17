@@ -6,7 +6,7 @@
 ## 前端路漫漫，慢慢修
 
 ### 学习资料站
-> 201805开通个人网站：[istaotao.com](http://istaotao.com/)
+> 201805开通个人网站：[istaotao.com](https://istaotao.com/)
 #### 网站
 * **[(2017)个人分享--web前端学习资源分享](https://juejin.im/post/5a0c1956f265da430a501f51)**
 * **[学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn)**
