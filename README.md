@@ -1,8 +1,4 @@
 
-> Mainly at ordinary times of learning something，OK，let's doing it! 
-
-> 业精于勤荒于嬉
-
 ## 前端路漫漫，慢慢修
 
 ### 学习资料站
@@ -66,7 +62,7 @@
 
 
 ### 学习日志
-* **[201903~](https://github.com/yangtao2o/learninglog/wiki/201903~)**
+* **[201903](https://github.com/yangtao2o/learninglog/wiki/201903)**
 * **[201804](https://github.com/yangtao2o/learninglog/wiki/201804)**
 * **[201803](https://github.com/yangtao2o/learninglog/wiki/201803)**
 * **[201801](https://github.com/yangtao2o/learninglog/wiki/201801)**
