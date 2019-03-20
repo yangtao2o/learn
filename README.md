@@ -62,12 +62,4 @@
 
 
 ### 学习日志
-* **[201903](https://github.com/yangtao2o/learninglog/wiki/201903)**
-* **[201804](https://github.com/yangtao2o/learninglog/wiki/201804)**
-* **[201803](https://github.com/yangtao2o/learninglog/wiki/201803)**
-* **[201801](https://github.com/yangtao2o/learninglog/wiki/201801)**
-* **[201712](https://github.com/yangtao2o/learninglog/wiki/201712)**
-* **[201711](https://github.com/yangtao2o/learninglog/wiki/201711)**
-* **[201710](https://github.com/yangtao2o/learninglog/wiki/201710)**
-* **[201709](https://github.com/yangtao2o/learninglog/wiki/201709)**
-* **[201708](https://github.com/yangtao2o/learninglog/wiki/201708)**
+* **[Log Wiki](https://github.com/yangtao2o/learninglog/wiki#log)**
