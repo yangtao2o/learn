@@ -6,7 +6,7 @@
 > 2019 迁移至Vuepress个人网站：[istaotao.com/home](https://istaotao.com/home)
 
 ## 分类
-* [前端](/blob/master/FrontEndDeveloper.md)
+* [前端](/FrontEndDeveloper.md)
 
 
 ## 学习日志
