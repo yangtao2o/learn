@@ -10,4 +10,4 @@
 
 
 ## 学习日志
-* **[Log Wiki](/wiki#log)**
+* **[Log Wiki](../../wiki#log)**
