@@ -13,6 +13,9 @@
 
 - [Web 前端面试指南与高频考题解析](https://juejin.im/book/5a8f9ddcf265da4e9f6fb959)
 - [我的掘金面试收藏集](https://juejin.im/collection/5b6ce375f265da5bdbaa7c38)
+
+#### JavaScript
+
 - [JavaScript 深入浅出](https://www.imooc.com/learn/277) - 视频，多看多理解，结合看《高程 3》前几章
 - 《JavaScript 高级程序设计》（第三版）- _Nicholas C.Zakas_
 - 《JavaScript 面向对象精要》- _Nicholas C.Zakas_，超薄的一本小册子
@@ -21,6 +24,9 @@
 - 《ES6 标准入门》- _阮一峰_
 - 《深入理解 ES6》- _Nicholas C.Zakas_，看作者就知道，必读
 - 《高性能网站建设指南》- _Steve Souders_，前端工程师技能精髓，提升网站页面速度的 14 条最佳实践
+
+#### CSS
+
 - 《CSS 揭秘》- _Lea Verou_，涵盖 7 大主题，47 个 CSS 技巧
 
 ## 前端框架篇
@@ -90,3 +96,8 @@
 ## 前端名人
 
 - [技术胖](http://jspang.com/) - 专注前端开发,每年 100 集免费视频
+
+## 内外兼修
+
+- [给编程初学者的一些建议](https://www.imooc.com/article/30702) - _七月_
+- [我是个前端开发者，我到底要不要学 Node 开发？](https://www.imooc.com/article/286282) - _七月_
