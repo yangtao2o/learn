@@ -4,7 +4,7 @@
 
 ### 主线
 
-- [前端硬核面试专题](./blob/master/docs/Interview.md)
+- [前端硬核面试专题](./docs/Interview.md)
 - [【自检】前端知识清单](http://www.conardli.top/blog/article/%E7%BB%BC%E5%90%88/%E3%80%90%E8%87%AA%E6%A3%80%E3%80%91%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E6%B8%85%E5%8D%95.html) - _ConardLi 的 blog_
 - [前端面试之道](https://juejin.im/book/5bdc715fe51d454e755f75ef) - _宋小菜_，助你建立起完整的前端知识架构体系，探究知识的原理，深入了解大厂常考知识点
 - [JavaScript 深入系列、JavaScript 专题系列、ES6 系列、React 系列](https://github.com/mqyqingfeng/Blog) - _冴羽的博客_
