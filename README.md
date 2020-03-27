@@ -1,5 +1,7 @@
 # 资源汇总
 
+个人博客：[Hexo风格](http://www.yangtao.site/)、[Vuepress风格](http://www.yangtao.site/vuepress/)
+
 ## 前端知识篇
 
 ### 主线
