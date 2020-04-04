@@ -1,10 +1,8 @@
 # 资源汇总
 
-## 个人学习笔记
+> 我的博客：[Hexo风格](http://www.yangtao.site/)、[Vuepress风格](http://www.yangtao.site/vuepress/)
 
-### 个人博客
-- [Hexo风格](http://www.yangtao.site/)
-- [Vuepress风格](http://www.yangtao.site/vuepress/)
+## 个人学习笔记
 
 ### 学习冴羽博客中的 JavaScript 系列笔记
 - [Javascript深入系列学习笔记](https://github.com/yangtao2o/learn/issues?q=is%3Aissue+is%3Aopen+label%3A%22JavaScript+%E6%B7%B1%E5%85%A5%E7%B3%BB%E5%88%97%22)
