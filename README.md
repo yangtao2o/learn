@@ -46,10 +46,11 @@
 
 ### React
 
+- [新手学习 react 迷惑的点(一)](https://juejin.im/post/5d6be5c95188255aee7aa4e0)
+- [新手学习 react 迷惑的点(二)](https://juejin.im/post/5d6f127bf265da03cf7aab6d)
 - [React16.4 快速上手](https://www.imooc.com/learn/1023)
 - [基于实例的 React16 傻瓜课程](https://www.imooc.com/learn/1045)
-- [React16+React-Router4
-  从零打造企业级电商后台管理系统](https://coding.imooc.com/learn/list/179.html) - _Rosen_，付费视频
+- [React16+React-Router4 从零打造企业级电商后台管理系统](https://coding.imooc.com/learn/list/179.html) - _Rosen_，付费视频
 - [React 组合式开发实践：打造企业管理系统五大核心模块](https://juejin.im/book/5b1e15f76fb9a01e516d14a0)
 - [React 源码深度解析 高级前端工程师必备技能](https://coding.imooc.com/class/309.html) - 付费视频
 - [React 源码解析](https://react.jokcy.me)- 视频配套文档
