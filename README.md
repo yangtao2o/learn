@@ -80,6 +80,11 @@
 - [Vue.js 技术揭秘](https://ustbhuangyi.github.io/vue-analysis/)
 - [深入实践 ES6 Proxy & Reflect](https://zhuanlan.zhihu.com/p/60126477)
 
+### 小册
+
+- [Vue 项目构建与开发入门](https://juejin.im/book/5b23a5aef265da59716fda09)
+- [Vue.js 组件精讲](https://juejin.im/book/5bc844166fb9a05cd676ebca) —— Aresn，基于 Vue.js 的开源 UI 组件库 — iView 的作者（GitHub 超过 18000 星）
+
 ### 视频
 
 - [Vue+Webpack 打造 todo 应用](https://www.imooc.com/learn/935) - _Jokcy_
