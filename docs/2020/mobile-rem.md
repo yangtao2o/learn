@@ -1,14 +1,14 @@
-# 关于移动端适配使用的几点
+# 移动端适配 vw + rem
 
 ## 要点
 
-- 用rem来做字体的适配，
-- 用srcset来做图片的响应式，
-- 宽度可以用rem，flex，栅格系统等来实现响应式，
+- 用 rem 来做字体的适配，
+- 用 srcset 来做图片的响应式，
+- 宽度可以用 rem，flex，栅格系统等来实现响应式，
 - 然后可能还需要利用媒体查询来作为响应式布局的基础
 
 ```scss
-// 默认根元素大小基准值375,即设计图尺寸为宽375px
+// 默认根元素大小基准值375,即设计图尺寸（蓝湖Web）宽375px
 // 不同页面设计图尺寸不同，在页面css头部重新初始化并重新定义html根元素的font-size
 
 $baseFontSize: 37.5;
@@ -44,7 +44,6 @@ img {
   height: auto;
 }
 
-
 // Mixins
 @mixin fontDpr($font-size) {
   font-size: $font-size;
@@ -57,7 +56,12 @@ img {
     font-size: $font-size * 3;
   }
 }
-@mixin flexStyle($direction: row, $justify: center, $align: center, $flex-wrap: wrap) {
+@mixin flexStyle(
+  $direction: row,
+  $justify: center,
+  $align: center,
+  $flex-wrap: wrap
+) {
   display: -webkit-flex;
   display: flex;
   flex-direction: $direction;
@@ -100,4 +104,7 @@ img {
 
 ## 参考资料
 
-- [前端响应式布局原理与方案（详细版）](https://juejin.im/post/6844903814332432397#heading-7)
+- [前端响应式布局原理与方案（详细版）](https://juejin.im/post/6844903814332432397#heading-7) —— rem + vw 方案
+- [关于移动端适配，你必须要知道的](https://juejin.im/post/6844903845617729549) —— 详细介绍，值得反复阅读
+- [移动端 H5 解惑-页面适配（二）](https://juejin.im/post/6844903651245293582) —— 早期兼容方式，主要是兼容 PC、移动，现不推荐，但是理论概念值得学习
+- [从网易与淘宝的 font-size 思考前端设计稿与工作流](https://www.cnblogs.com/lyzg/p/4877277.html) —— 理解大厂的逻辑，站在大厂的角度想问题
