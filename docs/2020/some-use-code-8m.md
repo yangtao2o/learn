@@ -15,7 +15,7 @@ var dealwithLists = function (target, detail, item) {
   var opts = {
     $swiper: $(target),
     detail: detail,
-    item: item || 5, 
+    item: item || 5,
     wrapStart: '<div class="swiper-slide">',
     wrapEnd: '</div>',
   }
@@ -76,12 +76,11 @@ var toggleSwiper = (function () {
   }
   return function (target, className) {
     if (className) {
-      $(className).not('.up').next('.box-wrap').hide();
+      $(className).not('.up').next('.box-wrap').hide()
     }
     $(target).on('click', className, handler)
   }
 })()
-
 ```
 
 ## 视频相关配置
@@ -159,11 +158,7 @@ var videoSet = (function () {
 
 var videoHandler = function () {
   var run_time = [5 * 1000, 9.05 * 1000, 16.04 * 1000]
-  var steps_gif = [
-    'https://cdn-oss-wordpress.aunbox.cn/haigeshi.com/media/shujuhuifu/1-1.mp4',
-    'https://cdn-oss-wordpress.aunbox.cn/haigeshi.com/media/shujuhuifu/1-2.mp4',
-    'https://cdn-oss-wordpress.aunbox.cn/haigeshi.com/media/shujuhuifu/1-3.mp4',
-  ]
+  var steps_gif = ['1.mp4', '2.mp4', '3.mp4']
   var index = 0
   var timer = null
   var $videoBox = $('#videoWrap').find('.video')
@@ -273,7 +268,6 @@ function updateNavPosition() {
     }
   }
 }
-
 ```
 
 ## 常规事件处理
@@ -305,14 +299,14 @@ var CommonHandler = (function () {
     $content: getTarget('nav'),
     handler: function (target, fadeInTarget, slideDownTarget) {
       var that = this
-      $(target).fadeOut(function() {
+      $(target).fadeOut(function () {
         $(fadeInTarget).fadeIn()
         if ($(fadeInTarget)[0] === $(that.$open)[0]) {
           $(slideDownTarget).hide()
         } else {
           $(slideDownTarget).show()
         }
-      }) 
+      })
     },
     clickEvent: function () {
       var that = this
