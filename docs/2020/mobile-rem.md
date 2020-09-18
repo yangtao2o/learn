@@ -1,10 +1,10 @@
-# 移动端适配 vw + rem
+# 移动端适配 vw + rem 技术方案
 
-## 要点
+## 理论要点
 
-- 用 rem 来做字体的适配，
-- 用 srcset 来做图片的响应式，
-- 宽度可以用 rem，flex，栅格系统等来实现响应式，
+- 用 rem 来做字体的适配
+- 用 srcset 来做图片的响应式
+- 宽度可以用 rem，flex，栅格系统等来实现响应式
 - 然后可能还需要利用媒体查询来作为响应式布局的基础
 
 ```scss
@@ -30,9 +30,9 @@ html {
     font-size: 54px;
   }
   //横屏下ipad等平板font-size最大限制
-  /* @media screen and (min-width: 813px) {
+  @media screen and (min-width: 813px) {
     font-size: 108px;
-  }*/
+  }
 }
 body {
   max-width: 540px;
@@ -45,23 +45,7 @@ img {
 }
 
 // Mixins
-@mixin fontDpr($font-size) {
-  font-size: $font-size;
-
-  [data-dpr='2'] & {
-    font-size: $font-size * 2;
-  }
-
-  [data-dpr='3'] & {
-    font-size: $font-size * 3;
-  }
-}
-@mixin flexStyle(
-  $direction: row,
-  $justify: center,
-  $align: center,
-  $flex-wrap: wrap
-) {
+@mixin flexStyle($direction: row, $justify: center, $align: center, $flex-wrap: wrap) {
   display: -webkit-flex;
   display: flex;
   flex-direction: $direction;
@@ -99,6 +83,136 @@ img {
 
 @function vw($px) {
   @return ($px / 375) * 100vw;
+}
+```
+
+## 实践操作
+
+### 开票项目
+
+Gitlab 地址：[fapiao.aunbox.cn](http://gitlab.kxhz.cc/AunboxFE/software-store/fapiao.aunbox.cn)
+
+背景：全新项目，使用 Vant 框架，使用 SASS
+
+使用 `"postcss-pxtorem": "^5.1.1"`:
+
+package.json:
+
+```json
+{
+  "postcss": {
+    "plugins": {
+      "postcss-pxtorem": {
+        "rootValue": 100,
+        "propList": ["*"]
+      }
+    }
+  }
+}
+```
+
+scss:
+
+```scss
+// 设计稿尺寸
+$baseDesign: 375;
+html {
+  font-size: (100 / $baseDesign) * 100vw;
+
+  @media screen and (orientation: landscape) {
+    font-size: (100 / $baseDesign) * 100vh;
+  }
+  // 注意Px单位不要被转换为rem
+  @media screen and (min-width: 769px) {
+    max-width: 540px;
+    min-height: 100%;
+    margin: 0 auto;
+    font-size: 110px;
+  }
+}
+```
+
+这样设置之后，通过 scss 编写的 px 单位会被 postcss 自动转换成 px,除了大写的 PX 或者 Px 单位。
+
+### 数据恢复大师官网移动站
+
+地址：[huifu.hgs.cn](https://huifu.hgs.cn/)
+
+Gitlab 地址：[huifu.hgs.cn](http://gitlab.kxhz.cc/AunboxFE/next-site/huifu.hgs.cn)
+
+背景：建立在 PC 基础上，所以需要避免 PC 的 px 单位转换，依旧使用的 SASS
+
+package.json: 设置 exclude 以排除此目录下的转换功能
+
+```json
+{
+  "postcss": {
+    "plugins": {
+      "postcss-pxtorem": {
+        "rootValue": 100,
+        "propList": ["*"],
+        "selectorBlackList": [],
+        "exclude": ["/assets/sass/pc"]
+      }
+    }
+  }
+}
+```
+
+scss：
+
+```scss
+$baseDesign: 375;
+
+html {
+  font-size: (100 / $baseDesign) * 100vw;
+
+  @media screen and (orientation: landscape) {
+    font-size: (100 / $baseDesign) * 100vh;
+  }
+}
+```
+
+## 总结
+
+鉴于实际项目的使用心得，使用方法如下：
+
+下载：[PostCSS](https://www.npmjs.com/package/postcss)
+
+```sh
+postcss
+postcss-pxtorem
+```
+
+配置：
+
+```json
+{
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "postcss-pxtorem": {
+        "rootValue": 100,
+        "propList": ["*"],
+        "selectorBlackList": [],
+        "exclude": ["/assets/sass/pc"]
+      }
+    }
+  }
+}
+```
+
+Sass 设置：
+
+```scss
+$baseDesign: 375;
+
+html {
+  font-size: (100 / $baseDesign) * 100vw;
+
+  @media screen and (orientation: landscape) {
+    font-size: (100 / $baseDesign) * 100vh;
+  }
 }
 ```
 
