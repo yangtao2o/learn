@@ -79,7 +79,15 @@ const resquestHandler = (url, options) => {
  */
 
 let isRefreshing = false // 是否正在刷新
-let subscribers = [] // 重试队列，每一项将是一个待执行的函数形式
+const subscribers = [] // 重试队列，每一项将是一个待执行的函数形式
+
+const addSubscriber = listener => listeners.push(listener)
+
+// 执行被缓存等待的接口事件
+const notifySubscriber = (newToken = '') => {
+  subscribers.forEach(callback => callback(newToken))
+  subscribers.length = 0
+}
 
 // 刷新 token 请求
 const refreshTokenRequst = async () => {
@@ -87,14 +95,14 @@ const refreshTokenRequst = async () => {
   try {
     const res = await accountLoginService.get_new_token(refresh_token)
     store.dispatch(onLogon(res))
-    onAccessTokenFetched(res.access_token)
-    isRefreshing = false
+    notifySubscriber(res.access_token)
   } catch (e) {
     console.error('请求刷新 token 失败')
   }
+  isRefreshing = false
 }
 
-// 判断如何
+// 判断如何响应
 function checkStatus(response, options) {
   const { url } = response
   if (!isRefreshing) {
@@ -102,8 +110,9 @@ function checkStatus(response, options) {
     refreshTokenRequst()
   }
 
-  // 将当前的请求保存至 addSubscriber
-  const retryOriginalRequest = new Promise(resolve => {
+  // 正在刷新 token，返回一个未执行 resolve 的 promise
+  return new Promise(resolve => {
+    // 将resolve放进队列，用一个函数形式来保存，等token刷新后直接执行
     addSubscriber(newToken => {
       const newOptions = {
         ...options,
@@ -116,18 +125,6 @@ function checkStatus(response, options) {
       resolve(request(url, newOptions))
     })
   })
-  return retryOriginalRequest
-}
-
-// 执行被缓存等待的接口事件
-function onAccessTokenFetched(newToken = '') {
-  subscribers.forEach(callback => callback(newToken))
-  subscribers = []
-}
-
-// 添加缓存
-function addSubscriber(callback) {
-  subscribers.push(callback)
 }
 
 // 部分页面的特殊处理：tpl页面操作时被迫退出时，不返回首页
