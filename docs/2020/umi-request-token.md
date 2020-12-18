@@ -163,7 +163,7 @@ const responseHandler = async (response, options) => {
 
 ### 模拟实际效果
 
-我们用一下代码来模拟下实际效果：
+我们用一下代码来模拟下请求的实际效果：
 
 ```js
 const request = () => console.log('重新请求当前接口')
@@ -225,7 +225,7 @@ refreshToken 接口请求
 
 结果显示会依次请求两次，很符合我们的逻辑，所以，接下来我们就是想办法解决多次请求的问题。
 
-## 如何避免同时多个请求多次刷新 token
+## 同时多个请求导致多次刷新 token
 
 ### 思路
 
@@ -234,6 +234,8 @@ refreshToken 接口请求
 其次，我们可以将其他请求存到一个队列中，等待使用最新 token，然后依次执行队列中的每一项，但如何让其处于等待状态呢？
 
 所以，解决等待的问题，需要借助 Promise 的特性了。
+
+这里有最详细的图文并茂的讲解：[前端请求 token 过期时,刷新 token 的处理](https://cloud.tencent.com/developer/article/1467376)
 
 ### Promise 特性
 
@@ -414,9 +416,23 @@ const responseHandler = async (response, options) => {
 }
 ```
 
+## 其他思路
+
+在请求发起前拦截每个请求，判断 token 的有效时间是否已经过期，若已过期，则将请求挂起，先刷新 token 后再继续请求。
+
+- 优点：在请求前拦截，能节省请求，省流量。
+- 缺点：需要后端额外提供一个 token 过期时间的字段 refreshTime；使用了本地时间判断，若本地时间被篡改，特别是本地时间比服务器时间慢时，拦截会失败。
+
+详细内容如下文章：
+
+- [axios 如何利用 promise 无痛刷新 token（二）](https://zhuanlan.zhihu.com/p/91569497)
+- [React-umi-request 动态刷新 Token 功能实现及 node.js 代码逻辑](https://www.cnblogs.com/qkstart/p/11856168.html)
+
 ## 参考资料
 
 - [前端请求 token 过期时,刷新 token 的处理](https://cloud.tencent.com/developer/article/1467376)
 - [前端单点登录 token 过期前端处理](https://blog.csdn.net/gaoyan666/article/details/103888844)
 - [前端实现 refresh_token 刷新, 无痛 token 刷新机制](https://www.jianshu.com/p/8ef1a4fd7fef)
 - [axios 如何利用 promise 无痛刷新 token](https://zhuanlan.zhihu.com/p/80125501)
+- [axios 如何利用 promise 无痛刷新 token（二）](https://zhuanlan.zhihu.com/p/91569497)
+- [React-umi-request 动态刷新 Token 功能实现及 node.js 代码逻辑](https://www.cnblogs.com/qkstart/p/11856168.html)
