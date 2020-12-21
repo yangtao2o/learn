@@ -291,27 +291,109 @@ const getCurrentData = currenRef.current
 currenRef.current = newData
 ```
 
-由于 usestate ,useReducer 执行更新数据源的函数，会带来整个组件从新执行到渲染，如果在函数组件内部声明变量，则下一次更新也会重置，那我们使用 useRef，就可以既想要保留数据，又不想触发函数的更新。
+封装一个 usePrevious:
+
+```js
+import { useRef, useEffect } from 'react'
+const usePrevious = value => {
+  const ref = useRef()
+  useEffect(() => {
+    ref.current = value
+  }, value)
+  return ref.current
+}
+```
+
+还可以用在定时器：
+
+```js
+function Demo() {
+  const [count, setCount] = useState(0)
+  const [isClear, setClear] = useState(false)
+  const timerID = useRef()
+
+  useEffect(() => {
+    timerID.current = setInterval(() => {
+      setCount(count + 1)
+    }, 1000)
+    return () => clearInterval(timerID.current)
+  }, [count])
+
+  useEffect(() => {
+    return () => clearInterval(timerID.current)
+  }, [isClear])
+}
+```
+
+由于 usestate，useReducer 执行更新数据源的函数，会带来整个组件从新执行到渲染，如果在函数组件内部声明变量，则下一次更新也会重置，那我们使用 useRef，就可以既想要保留数据，又不想触发函数的更新。
 
 ## useContext
 
-- 接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值
+- 接收一个 context 对象（`React.createContext` 的返回值）并返回该 context 的当前值
 - 当前的 context 值由上层组件中距离当前组件最近的 `<MyContext.Provider>` 的 value prop 决定
 - Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法
 
 ## useReducer
 
+```js
+const [state, dispatch] = useReducer(reducer, initialState, init)
+```
+
+特点：
+
 - useState 的替代方案
-- `const [state, dispatch] = useReducer(reducer, initialState, init);`
 - 数组的第一项就是更新之后 state 的值 ，第二个参数是派发更新的 dispatch 函数
 - dispatch 的触发会触发组件的更新
 - 使用 useReducer 还能给那些会触发深更新的组件做性能优化，因为你可以向子组件传递 dispatch 而不是回调函数
 
+使用：
+
+```js
+import { useReducer } from 'react'
+
+const DECREMENT = 'decrement'
+const INCREMENT = 'increment'
+const RESET = 'reset'
+
+const initialState = { number: 0 }
+
+function reducer(state, action) {
+  const { type, payload } = action
+  switch (type) {
+    case DECREMENT:
+      return { number: state.number + 1 }
+    case INCREMENT:
+      return { number: state.number - 1 }
+    case RESET:
+      return { number: payload.number }
+    default:
+      return { number: state.number }
+  }
+}
+
+export default function Example() {
+  const [state, dispath] = useReducer(reducer, initialState)
+  return (
+    <div>
+      当前值：{state.number}
+      <button onClick={() => dispath({ type: DECREMENT })}>增加</button>
+      <button onClick={() => dispath({ type: INCREMENT })}>减少</button>
+      <button onClick={() => dispath({ type: RESET, payload: initialState })}>
+        重置
+      </button>
+    </div>
+  )
+}
+```
+
 ## useMemo
 
-- `const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);`
+```js
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b])
+```
+
 - 第二个参数是一个 deps 数组，数组里的参数变化决定了 useMemo 是否更新回调函数
-- 如果把 memo 比做无状态组件的 ShouldUpdate ，那么 useMemo 就是更为细小的 ShouldUpdate 单元
+- 如果把 memo 比做无状态组件的 ShouldUpdate，那么 useMemo 就是更为细小的 ShouldUpdate 单元
 
 优点
 
@@ -319,20 +401,99 @@ currenRef.current = newData
 - useMemo 可以减少子组件的渲染次数
 - useMemo 让函数在某个依赖项改变的时候才运行，这可以避免很多不必要的开销
 
+比如我们使用防抖函数时需要这样做：
+
 ```js
-let pullUpDebounce = useMemo(() => {
-  return debounce(pullUp, 300)
-}, [pullUp])
-// 千万注意，这里不能省略依赖，
-// 不然拿到的始终是第一次 pullUp 函数的引用，相应的闭包作用域变量都是第一次的，产生闭包陷阱。
+const searchDebounce = useMemo(() => {
+  return debounce(handleSearch, 600)
+}, [handleSearch])
 ```
 
+这样的话，用 useMemo 包裹之后的 debounce 函数可以避免了每次组件更新再重新声明，可以限制上下文的执行。
+
 ## useCallback
+
+```js
+const memoizedCallback = useCallback(() => {
+  doSomething(a, b)
+}, [a, b])
+```
 
 - `useCallback(fn, [])` 相当于 `useMemo(() => fn, [])`
 - 用处：当以 props 的形式传递给子组件时, 可避免非必要渲染
 - 区别: useMemo 返回的是函数运行的结果，useCallback 返回的是函数
 - useCallback ，需要搭配 react.memo 或 pureComponent 一起使用，才能使性能达到最佳
+
+## useMemo 和 useCallBack 示例
+
+接下来的组件中，我们维护了两个 state，可以看到 getCount 的计算仅仅跟 count 有关，那么我们兵分三路，逐个了解下各自的军情。
+
+```js
+import React, { useState, useMemo, useCallback } from 'react'
+
+const Child = React.memo(function ({ getCount }) {
+  return <h4>传过来的Count值：{getCount()}</h4>
+})
+
+export default function DemoUseMemo() {
+  const [count, setCount] = useState(1)
+  const [val, setValue] = useState('')
+
+  // 普通调用
+  const getCount = () => {
+    console.log('normal-result')
+    return count
+  }
+
+  // 使用 useMemo
+  const getCountWithMemo = useMemo(() => {
+    console.log('useMemo-result')
+    return count
+  }, [count])
+
+  // 使用 useCallback
+  const getCountWithCallback = useCallback(() => {
+    console.log('useCallback-result')
+    return count
+  }, [count])
+
+  return (
+    <div>
+      <h4>
+        Count：{getCount()}, {getCountWithMemo}
+      </h4>
+      <Child getCount={getCountWithCallback} />
+      <div>
+        <button onClick={() => setCount(count + 1)}>+1</button>
+        <input value={val} onChange={event => setValue(event.target.value)} />
+      </div>
+    </div>
+  )
+}
+```
+
+当我们点击 `+1` 时，打印如下：
+
+```log
+useMemo-result
+normal-result
+useCallback-result
+```
+
+当我们输入时，打印如下，只有普通调用的打印结果：
+
+```log
+normal-result
+```
+
+如上所示，普通调用时，无论是 count 还是 val 变化，都会导致 getCount 重新计算，所以这里我们希望 val 修改的时候，不需要再次计算，这种情况下我们可以使用 useMemo。
+
+同样的，使用了 useCallback 后，结合 `React.memo`，显示结果和 useMemo 完全一致。如果这里值使用了 useCallback，而并未使用`React.memo`，结果如何呢？答案就是和普通调用结果一致。
+
+那 useMemo 和 useCallback 到底有什么异同呢？
+
+- 相同：接收的参数都是一样，都是在其依赖项发生变化后才执行，都是返回缓存的值
+- 区别：useMemo 返回的是函数运行的结果，useCallback 返回的是函数。
 
 ## 自定义 Hook
 
@@ -442,3 +603,5 @@ export function useRequest(cb, isRequest) {
 - [轻松学会 React 钩子：以 useEffect() 为例](http://www.ruanyifeng.com/blog/2020/09/react-hooks-useeffect-tutorial.html)
 - [[译] 如何使用 React hooks 获取 api 接口数据](https://juejin.cn/post/6844903921480105991)
 - [玩转 react-hooks,自定义 hooks 设计模式及其实战 ](https://juejin.cn/post/6890738145671938062)
+- [useMemo 和 useCallback 的使用](https://www.cnblogs.com/nianzhilian/p/14141620.html)
+- [一篇文章，带你学会 useRef、useCallback、useMemo](https://zhuanlan.zhihu.com/p/117577458)
