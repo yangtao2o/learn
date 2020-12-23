@@ -145,59 +145,6 @@ Post.getInitialProps = async function (context) {
 export default Post
 ```
 
-## 使用 Redux
-
-## 自定义后端
-
-在根目录下增加如 `server-local.js`，并在 package.json 配置启动，这样就可以通过访问本机 ip 同步测试跨端浏览器：
-
-```js
-"scripts": {
-  "dev:local": "next build && node server-local.js",
-}
-```
-
-```js
-const { createServer } = require('http')
-const os = require('os')
-const { parse } = require('url')
-const next = require('next')
-
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
-const PORT = 3100
-const myHost = getLocalIP()
-
-function getLocalIP() {
-  const interfaces = os.networkInterfaces()
-  for (let devName in interfaces) {
-    const iface = interfaces[devName]
-    for (var i = 0; i < iface.length; i++) {
-      const alias = iface[i]
-      if (
-        alias.family === 'IPv4' &&
-        alias.address !== '127.0.0.1' &&
-        !alias.internal
-      ) {
-        return alias.address
-      }
-    }
-  }
-}
-
-app.prepare().then(() => {
-  createServer((req, res) => {
-    const parsedUrl = parse(req.url, true)
-
-    handle(req, res, parsedUrl)
-  }).listen(PORT, err => {
-    if (err) throw err
-    console.log(`Server running at http://${myHost}:${PORT}`)
-  })
-})
-```
-
 ## 项目打包
 
 - `next build` 打包项目；
@@ -255,6 +202,232 @@ app.prepare().then(() => {
     }
   }
 }
+```
+
+## 使用 react-redux
+
+### 项目结构
+
+使用[www.mindatoz.cn](http://gitlab.kxhz.cc/AunboxFE/mindatoz/www.mindatoz.cn)项目中的结构：
+
+```tree
+├── store
+│   ├── index.js
+│   ├── modules
+│   │   └── user.js
+│   └── rootReducer.js
+```
+
+### rootReducer.js
+
+```js
+import { combineReducers } from 'redux'
+import { reducer as user } from './modules/user'
+
+export default combineReducers({
+  user,
+})
+```
+
+### `modules/user.js` 部分内容
+
+引入 `immer`
+
+```js
+import produce, { enableES5 } from 'immer'
+import { profileService } from '@kxhz/user-service-sdk'
+
+enableES5() // 兼容IE
+
+// Actions Types
+export const types = {
+  SAVE_USER_INFO: 'USER/SAVE_USER_INFO',
+  SAVE_LOGIN_STATUS: 'USER/SAVE_LOGIN_STATUS',
+}
+
+// Reducer
+const initState = {
+  userInfo: {},
+  isLogin: false,
+}
+
+export function reducer(state = initState, action = {}) {
+  switch (action.type) {
+    case types.SAVE_USER_INFO:
+      return produce(state, draft => {
+        draft.userInfo = action.data
+      })
+    case types.SAVE_LOGIN_STATUS:
+      return produce(state, draft => {
+        draft.isLogin = action.data
+      })
+    default:
+      return state
+  }
+}
+
+// Action Creators
+export const saveUserInfo = data => ({
+  type: types.SAVE_USER_INFO,
+  data,
+})
+
+export const saveLoginStatus = data => ({
+  type: types.SAVE_LOGIN_STATUS,
+  data,
+})
+
+// 获取用户信息、更新用户信息
+export const getUserInfo = (token = {}) => {
+  return async dispatch => {
+    const res = await profileService.getProfile()
+    if (res && !res.code) {
+      dispatch(saveUserInfo(res))
+      dispatch(saveLoginStatus(true))
+    }
+  }
+}
+```
+
+### index.js
+
+引入 `redux redux-thunk`
+
+```js
+import { createStore, compose, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import rootReducer from './rootReducer'
+
+// redux_devtools
+const composeEnhancers =
+  (typeof window !== 'undefined' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose
+
+const store = createStore(
+  rootReducer,
+  /* preloadedState, */ composeEnhancers(applyMiddleware(thunkMiddleware))
+)
+
+export default store
+```
+
+### \_app.js
+
+在`pages/_app.js`下引入 `react-redux`，`next-redux-wrapper`:
+
+```js
+import { Provider } from 'react-redux'
+import { createWrapper } from 'next-redux-wrapper'
+import store from '@/store'
+
+function MyApp(props) {
+  const { Component, pageProps } = props
+
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  )
+}
+
+const wrapper = createWrapper(() => store)
+
+export default wrapper.withRedux(MyApp)
+```
+
+### 使用 Hooks 获取、更新
+
+```js
+import { useSelector, useDispatch } from 'react-redux'
+import { getUserInfo } from '@/store/modules/user.js'
+
+const Account = () => {
+  // useSelector 获取状态
+  const { userInfo, isLogin, token } = useSelector(state => state.user)
+
+  // useDispatch 更新状态
+  const dispatch = useDispatch()
+
+  //获取用户信息
+  useEffect(() => {
+    if (isLogin) {
+      dispatch(getUserInfo(token))
+    }
+  }, [isLogin])
+
+  return <>111</>
+}
+
+export default Account
+```
+
+### 使用 Class 获取、更新
+
+如果使用了 Class，需要借助 connect 高阶组件函数:
+
+```js
+import { connect } from 'react-redux'
+
+class DrawingWrap extends Component {...}
+
+const mapStateToProps = (state) => ({ user: state.user })
+const mapDispatchToProps = (dispatch) => ({
+  getUserInfo: (token) => dispatch(getUserInfo(token)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawingWrap)
+```
+
+## 自定义启动服务
+
+在根目录下增加如 `server-local.js`，并在 package.json 配置启动，这样就可以通过访问本机 ip 同步测试跨端浏览器：
+
+```js
+"scripts": {
+  "dev:local": "next build && node server-local.js",
+}
+```
+
+```js
+const { createServer } = require('http')
+const os = require('os')
+const { parse } = require('url')
+const next = require('next')
+
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
+const PORT = 3100
+const myHost = getLocalIP()
+
+function getLocalIP() {
+  const interfaces = os.networkInterfaces()
+  for (let devName in interfaces) {
+    const iface = interfaces[devName]
+    for (var i = 0; i < iface.length; i++) {
+      const alias = iface[i]
+      if (
+        alias.family === 'IPv4' &&
+        alias.address !== '127.0.0.1' &&
+        !alias.internal
+      ) {
+        return alias.address
+      }
+    }
+  }
+}
+
+app.prepare().then(() => {
+  createServer((req, res) => {
+    const parsedUrl = parse(req.url, true)
+
+    handle(req, res, parsedUrl)
+  }).listen(PORT, err => {
+    if (err) throw err
+    console.log(`Server running at http://${myHost}:${PORT}`)
+  })
+})
 ```
 
 ## 参考资料
