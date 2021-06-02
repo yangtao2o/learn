@@ -1,4 +1,4 @@
-export default class WebSocketHandle {
+export default class WsFactory {
   /**
    * @description: 初始化实例属性，保存参数
    * @param {String} url ws的接口
@@ -19,10 +19,10 @@ export default class WebSocketHandle {
   connect(data, callback) {
     // 新建 WebSocket 实例
     this.ws = new WebSocket(this.url)
-    this.ws.onopen = e => {
+    this.ws.onopen = (e) => {
       // 连接ws成功回调
       this.status = 'open'
-      if (callback) {
+      if (callback && typeof callback === 'function') {
         callback()
       }
 
@@ -36,7 +36,7 @@ export default class WebSocketHandle {
       }
     }
     // 监听服务器端返回的信息
-    this.ws.onmessage = e => {
+    this.ws.onmessage = (e) => {
       // 把数据传给回调函数，并执行回调
       if (e.data === 'pong') {
         this.pingPong = 'pong' // 服务器端返回pong,修改pingPong的状态
@@ -44,11 +44,11 @@ export default class WebSocketHandle {
       return this.msgCallback(e.data)
     }
     // ws关闭回调
-    this.ws.onclose = e => {
+    this.ws.onclose = (e) => {
       this.closeHandle(e) // 判断是否关闭
     }
     // ws出错回调
-    this.onerror = e => {
+    this.ws.onerror = (e) => {
       this.closeHandle(e) // 判断是否关闭
     }
   }
@@ -61,7 +61,7 @@ export default class WebSocketHandle {
         // 检查ws为链接状态 才可发送
         this.ws.send('ping') // 客户端发送ping
       }
-    }, 10000)
+    }, 30 * 1000)
     this.pongInterval = setInterval(() => {
       this.pingPong = false
       if (this.pingPong === 'ping') {
@@ -70,7 +70,7 @@ export default class WebSocketHandle {
       // 重置为ping 若下一次 ping 发送失败 或者pong返回失败(pingPong不会改成pong)，将重启
       console.log('返回pong')
       this.pingPong = 'ping'
-    }, 20000)
+    }, 60 * 1000)
   }
 
   // 发送信息给服务器
@@ -90,14 +90,15 @@ export default class WebSocketHandle {
       }
       this.connect('') // 重连
     } else {
-      console.log(`${this.name}websocket手动关闭`)
+      this.close()
     }
   }
 
-  // 手动关闭WebSocket
-  closeMyself() {
-    console.log(`关闭${this.name}`)
-    this.status = 'close'
-    return this.ws.close()
+  close() {
+    if (this.status !== 'close') {
+      console.log(`${this.name}websocket手动关闭`)
+      this.status = 'close'
+      return this.ws.close()
+    }
   }
 }
