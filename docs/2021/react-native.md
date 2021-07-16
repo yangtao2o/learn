@@ -131,6 +131,111 @@ useEffect(() => {
 
 - [How to clear react-native cache?](https://stackoverflow.com/questions/46878638/how-to-clear-react-native-cache)
 
+## 手动修改安装包版本号
+
+### Android
+
+修改`android/app/build.gradle`中的 `versionName`:
+
+```
+defaultConfig {
+  versionName "1.0.2"
+}
+```
+
+### IOS
+
+用 xcode 打开`PROJECT_NAME.xcodeproj`,修改`PROJECT_NAME/Info.plist`的`Bundle versions string, short`
+
+## Andriod 下设置阴影
+
+```js
+style: {
+  shadowOffset: {width: 0, height: 5},
+  shadowOpacity: 0.5,
+  shadowRadius: 5,
+  shadowColor: '#ddd',
+  //让安卓拥有灰色阴影
+  elevation: 4,
+}
+```
+
+## Andriod 监听返回事件
+
+使用`BackHandler`API:
+
+```js
+import React, { useEffect } from 'react'
+import { Text, View, StyleSheet, BackHandler, Alert } from 'react-native'
+
+const App = () => {
+  const backAction = () => {
+    Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+        style: 'cancel',
+      },
+      { text: 'YES', onPress: () => BackHandler.exitApp() },
+    ])
+    return true
+  }
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', backAction)
+
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', backAction)
+  }, [])
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Click Back button!</Text>
+    </View>
+  )
+}
+```
+
+但是对于 Modal 是无效的，所以需要传递参数去判断当前情况：
+
+```js
+// visible: modal是否打开
+useEffect(() => {
+  const backAction = () => {
+    if (visible) {
+      handleVisible()
+    }
+
+    return visible ? true : false
+  }
+
+  BackHandler.addEventListener('hardwareBackPress', backAction)
+
+  return () => BackHandler.removeEventListener('hardwareBackPress', backAction)
+}, [visible])
+```
+
+## react-native App 更新方案
+
+### rn-fetch-blob
+
+用于访问管理文件与请求传输数据。正好存在集下载、通知与自动安装 apk 的 api
+
+### react-native-fs
+
+实现了 react native 的访问本地文件系统，支持文件的创建、删除、查看、上传、下载
+
+### 参考资料
+
+- [rn-fetch-blob](https://github.com/joltup/rn-fetch-blob) --- 停止维护
+- [react-native-fs](https://github.com/itinance/react-native-fs) --- 停止维护
+- [react-native-blob-util](https://github.com/RonRadtke/react-native-blob-util) ---继续维护
+- [React-Native 原生 APP 更新](https://www.cnblogs.com/Grewer/p/14518357.html)
+- [react-native App 更新方案](https://www.jianshu.com/p/77e5bd98a7f1)
+- [react-native install download apk file](https://blog.csdn.net/u011149565/article/details/100575218)
+- [React-Native 安卓 自动下载 APK 文件并安装](https://blog.csdn.net/weixin_42284466/article/details/84898859)
+- [React-Native 安卓 自动下载 APK 文件并安装 兼容 8.0 以上](https://www.jianshu.com/p/bd9495425d7f)
+
 ## 安卓设置状态栏和 iOS 保持一致
 
 ```js
