@@ -4,63 +4,76 @@
 
 ## 个人学习笔记
 
-### 学习冴羽博客中的 JavaScript 系列笔记
-
-- [Javascript 深入系列学习笔记](https://github.com/yangtao2o/learn/issues?q=is%3Aissue+is%3Aopen+label%3A%22JavaScript+%E6%B7%B1%E5%85%A5%E7%B3%BB%E5%88%97%22)
-- [Javascript 专题系列学习笔记](https://github.com/yangtao2o/learn/labels/JavaScript%20%E4%B8%93%E9%A2%98%E7%B3%BB%E5%88%97)
-- [ES6 系列学习笔记](https://github.com/yangtao2o/learn/issues?q=is%3Aissue+is%3Aopen+label%3A%22ES6+%E7%B3%BB%E5%88%97%22)
-
-### 其他系列
+### 学习系列
 
 - [CSS 系列](https://github.com/yangtao2o/learn/issues?q=is%3Aissue+is%3Aopen+label%3A%22CSS+%E7%B3%BB%E5%88%97%22)
 - [Vue 系列](https://github.com/yangtao2o/learn/issues?q=is%3Aissue+is%3Aopen+label%3A%22Vue+%E7%B3%BB%E5%88%97%22)
 - [React 系列](https://github.com/yangtao2o/learn/issues?q=is%3Aissue+is%3Aopen+label%3A%22React+%E7%B3%BB%E5%88%97%22)
 - [前端面试](https://github.com/yangtao2o/learn/labels/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95)
 - [手写系列](https://github.com/yangtao2o/learn/labels/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97)
+- [Tool 系列](https://github.com/yangtao2o/learn/labels/Tool%20%E7%B3%BB%E5%88%97)
 - [框架源码](https://github.com/yangtao2o/learn/issues?q=is%3Aissue+is%3Aopen+label%3A%E6%A1%86%E6%9E%B6%E6%BA%90%E7%A0%81)
+
+### 学习冴羽博客中的 JavaScript 系列笔记
+
+- [Javascript 深入系列学习笔记](https://github.com/yangtao2o/learn/issues?q=is%3Aissue+is%3Aopen+label%3A%22JavaScript+%E6%B7%B1%E5%85%A5%E7%B3%BB%E5%88%97%22)
+- [Javascript 专题系列学习笔记](https://github.com/yangtao2o/learn/labels/JavaScript%20%E4%B8%93%E9%A2%98%E7%B3%BB%E5%88%97)
+- [ES6 系列学习笔记](https://github.com/yangtao2o/learn/issues?q=is%3Aissue+is%3Aopen+label%3A%22ES6+%E7%B3%BB%E5%88%97%22)
 
 ## 前端知识体系
 
-### 主线
-
+- [JavaScript 深入系列、JavaScript 专题系列、ES6 系列、React 系列](https://github.com/mqyqingfeng/Blog) - _冴羽的博客_
+- [高级前端进阶博文](https://www.muyiy.cn/blog/) - _木易杨前端进阶_
 - [2 万字 | 前端基础拾遗 90 问](https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-66)
 - [前端硬核面试专题](https://yangtao2o.github.io/learn/#/docs/Interview)
 - [前端知识清单【自检】](http://www.conardli.top/blog/article/%E7%BB%BC%E5%90%88/%E3%80%90%E8%87%AA%E6%A3%80%E3%80%91%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E6%B8%85%E5%8D%95.html) - _ConardLi 的 blog_
 - [前端面试之道](https://juejin.im/book/5bdc715fe51d454e755f75ef) - _宋小菜_，助你建立起完整的前端知识架构体系，探究知识的原理，深入了解大厂常考知识点
-- [JavaScript 深入系列、JavaScript 专题系列、ES6 系列、React 系列](https://github.com/mqyqingfeng/Blog) - _冴羽的博客_
-- [高级前端进阶博文](https://www.muyiy.cn/blog/) - _木易杨前端进阶_
-
-### 副本
-
-- [揭秘一线互联网企业
-  前端 JavaScript 高级面试](https://coding.imooc.com/learn/list/190.html) - _双越_，BAT 工程师讲解前端 JS 高级面试考点：虚拟 DOM、Vue、React、Hybrid 实现原理，付费视频
 - [Web 前端面试指南与高频考题解析](https://juejin.im/book/5a8f9ddcf265da4e9f6fb959)
 - [我的掘金面试收藏集](https://juejin.im/collection/5b6ce375f265da5bdbaa7c38)
+- [揭秘一线互联网企业前端 JavaScript 高级面试](https://coding.imooc.com/learn/list/190.html) - _双越_，BAT 工程师讲解前端 JS 高级面试考点：虚拟 DOM、Vue、React、Hybrid 实现原理，付费视频
 
 ## JavaScript
 
 - [JavaScript 深入浅出](https://www.imooc.com/learn/277) - 视频，多看多理解，结合看《高程 3》前几章
 - [ES6 快速入门](https://www.imooc.com/learn/955) - _快乐动起来呀_，免费视频
-
-### 书籍
-
-- 《JavaScript 高级程序设计》（第三版）- _Nicholas C.Zakas_
-- 《JavaScript 面向对象精要》- _Nicholas C.Zakas_，超薄的一本小册子
-- 《JavaScript 语言精粹》- _Douglas Crockford_，二八原则，只读精华
-- 《你不知道的 JavaScript》- _Kyle Simpson_，推荐阅读顺序：上-下-中
-- 《ES6 标准入门》- _阮一峰_
-- 《深入理解 ES6》- _Nicholas C.Zakas_，看作者就知道，必读
-- 《高性能网站建设指南》- _Steve Souders_，前端工程师技能精髓，提升网站页面速度的 14 条最佳实践
-
-### Promise
-
 - [Node.js 最新技术栈之 Promise 篇](https://cnodejs.org/topic/560dbc826a1ed28204a1e7de) - 2015
 - [理解 Promise 的工作原理](https://blog.coding.net/blog/how-do-promises-work)
 - [JavaScript Promise 迷你书（中文版）](http://liubin.org/promises-book/)
 
+### JavaScript 正则表达式
+
+- [JavaScript 正则表达式迷你书（1.1 版）.pdf](https://github.com/qdlaoyao/js-regex-mini-book) - 老姚出版，多读几遍，获益匪浅
+- [JavaScript 正则表达式](https://www.imooc.com/learn/706) - 视频
+
+### JavaScript 设计模式
+
+- [Javascript 设计模式系统讲解与应用](https://coding.imooc.com/learn/list/255.html) - _双越_，付费视频
+- 《JavaScript 设计模式》- _张容铭_，快速了解 JS 的 36 个设计模式
+- 《JavaScript 设计模式与开发实践》- _曾探_，深入剖析 JS 的 16 个设计模式
+
+### JavaScript 算法
+
+- [Javascript 实现二叉树算法](https://www.imooc.com/learn/888)
+- [前端该如何准备数据结构和算法？](https://juejin.im/post/5d5b307b5188253da24d3cd1)
+- 《算法图解》
+- [JavaScript 版 数据结构与算法](https://coding.imooc.com/learn/list/315.html) - _快乐动起来呀_，付费视频
+- [用 JavaScript 实现的算法和数据结构](http://www.conardli.top/docs/)
+
+### 书籍
+
+- 《JavaScript 高级程序设计》（第三版）- _Nicholas C.Zakas_，第四版已经上市了，直接第四版
+- 《JavaScript 面向对象精要》- _Nicholas C.Zakas_，超薄的一本小册子，正如书名一般，只讲精华
+- 《JavaScript 语言精粹》- _Douglas Crockford_，二八原则，只读精华
+- 《你不知道的 JavaScript》- _Kyle Simpson_，推荐阅读顺序：上-下-中
+- 《ES6 标准入门》- _阮一峰_
+- 《深入理解 ES6》- _Nicholas C.Zakas_，看作者就知道，必读
+- 《高性能网站建设指南》- _Steve Souders_，前端工程师技能精髓，提升网站页面速度的 14 条最佳实践（部分已过时，了解即可）
+
 ## CSS
 
-- 《CSS 揭秘》- _Lea Verou_，涵盖 7 大主题，47 个 CSS 技巧
+- 《CSS 揭秘》- _Lea Verou_，译者: CSS 魔法，涵盖 7 大主题，47 个 CSS 技巧
+- 《CSS 世界》- 张鑫旭，多读几遍，其义自见
+- 《CSS 权威指南》- 不推荐一上来就《CSS 权威指南》，平时学习工作查询 MDN 足矣
 - [前端基础篇之 CSS 世界](https://juejin.im/post/5ce607a7e51d454f6f16eb3d)
 - [CSS 常见布局方式](https://juejin.im/post/599970f4518825243a78b9d5)
 - [再聊移动端页面的适配](https://juejin.im/entry/5a619c62518825734a74c2cc#comment)
@@ -68,7 +81,7 @@
 
 ## Vue
 
-### 文章
+### 2019
 
 - [30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）](https://juejin.im/post/5d59f2a451882549be53b170)
 - [Vue 应用性能优化指南](https://juejin.im/post/5b960fcae51d450e9d645c5f)
@@ -80,12 +93,12 @@
 - [Vue.js 技术揭秘](https://ustbhuangyi.github.io/vue-analysis/)
 - [深入实践 ES6 Proxy & Reflect](https://zhuanlan.zhihu.com/p/60126477)
 
-### 小册
+#### 掘金小册
 
 - [Vue 项目构建与开发入门](https://juejin.im/book/5b23a5aef265da59716fda09)
 - [Vue.js 组件精讲](https://juejin.im/book/5bc844166fb9a05cd676ebca) —— Aresn，基于 Vue.js 的开源 UI 组件库 — iView 的作者（GitHub 超过 18000 星）
 
-### 视频
+#### 视频
 
 - [Vue+Webpack 打造 todo 应用](https://www.imooc.com/learn/935) - _Jokcy_
 - [Vue 全家桶+SSR+Koa2 全栈开发美团网](https://coding.imooc.com/learn/list/280.html) - _快乐动起来呀_，付费视频
@@ -96,7 +109,7 @@
 
 ## React
 
-### 文章
+### 2019
 
 - [你要的 React 面试知识点，都在这了](https://juejin.im/post/5cf0733de51d4510803ce34e)
 - [30 分钟精通 React Hooks](https://juejin.im/post/5be3ea136fb9a049f9121014)
@@ -119,7 +132,7 @@
 - [理解 MVVM 在 react、vue 中的使用](https://www.cnblogs.com/momozjm/p/11542635.html)
 - [React16.4 快速上手](https://www.imooc.com/learn/1023)
 
-### 视频
+#### 视频
 
 - [基于实例的 React16 傻瓜课程](https://www.imooc.com/learn/1045)
 - [React16+React-Router4 从零打造企业级电商后台管理系统](https://coding.imooc.com/learn/list/179.html) - _Rosen_，付费视频
@@ -137,40 +150,6 @@
 
 - [《typescript 热门教程》](https://ts.xcatliu.com/)
 - [基于 TypeScript 从零重构 axios](https://coding.imooc.com/class/330.html) - _ustbhuangyi_，从零开始重构一个功能完整的 JS 库，并进行单元测试与部署发布，是学习造轮子的不二之选，付费视频
-
-## 其他框架
-
-- [手把手带你打造自己的 UI 样式库](https://www.imooc.com/read/36)
-- [zepto 设计和源码分析](https://www.imooc.com/learn/745) - _双越_
-
-## JavaScript 正则表达式
-
-- [JavaScript 正则表达式迷你书（1.1 版）.pdf](https://github.com/qdlaoyao/js-regex-mini-book) - 老姚出版，多读几遍，获益匪浅
-- [JavaScript 正则表达式](https://www.imooc.com/learn/706) - 视频
-
-## JavaScript 设计模式篇
-
-### 主线
-
-- [Javascript 设计模式系统讲解与应用](https://coding.imooc.com/learn/list/255.html) - _双越_，付费视频
-
-### 副本
-
-- 《JavaScript 设计模式》- _张容铭_，快速了解 JS 的 36 个设计模式
-- 《JavaScript 设计模式与开发实践》- _曾探_，深入剖析 JS 的 16 个设计模式
-
-## JavaScript 算法篇
-
-### 主线
-
-- [JavaScript 版 数据结构与算法](https://coding.imooc.com/learn/list/315.html) - _快乐动起来呀_，付费视频
-- [用 JavaScript 实现的算法和数据结构](http://www.conardli.top/docs/)
-
-### 副本
-
-- [Javascript 实现二叉树算法](https://www.imooc.com/learn/888)
-- [前端该如何准备数据结构和算法？](https://juejin.im/post/5d5b307b5188253da24d3cd1)
-- 《算法图解》
 
 ## 浏览器
 
@@ -235,12 +214,7 @@
 
 ## Linux 篇
 
-### 主线
-
 - [Linux 核心技能与应用](https://coding.imooc.com/class/386.html) - _Oscar_ 循序渐进掌握 Linux 核心知识体系和线上部署（付费视频）
-
-### 副本
-
 - [Linux 命令行与 Shell 脚本编程大全](https://www.imooc.com/read/39) - _Oscar / 10 年 Linux 老司机_
 
 ## 前端名人
@@ -258,3 +232,5 @@
 - [我的掘金收藏集](https://juejin.im/user/58b67dd58fd9c50061238e38/collections)
 - [怎样系统地自学前端？](https://www.zhihu.com/question/67467219/answer/253992931) - 冴羽知乎回答
 - [那些改变过世界的代码都是怎么写的？](https://mp.weixin.qq.com/s/gf0O9EiMv6Ew8eIAeUAgAw)
+- [手把手带你打造自己的 UI 样式库](https://www.imooc.com/read/36)
+- [zepto 设计和源码分析](https://www.imooc.com/learn/745) - _双越_
