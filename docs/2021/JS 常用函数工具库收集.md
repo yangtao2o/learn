@@ -4,6 +4,68 @@
 
 ## 主要内容
 
+### url 相关使用
+
+```js
+// 获取 url params
+export const getParams = function (search) {
+  const paramPart = search.substr(1).split('&')
+  return paramPart.reduce(function (res, item) {
+    const parts = item.split('=')
+    res[parts[0]] = parts[1]
+    return res
+  }, {})
+}
+
+// obj to url
+export const getURL = obj => {
+  var str = JSON.stringify(obj)
+  var str1 = str.replace(/:/g, '=') // 使用=代替:
+  var str2 = str1.replace(/"/g, '') // 去掉"
+  var str3 = str2.replace(/,/g, '&') // 使用&代替,
+  var str4 = str3.match(/\{([^)]*)\}/) // 去掉{}
+  return str4[1]
+}
+```
+
+### 获取日期
+
+```js
+// seperator 输出格式，默认如 20210220
+export function getCurrentDate(seperator = '') {
+  const date = new Date()
+  const nowMonth = date.getMonth() + 1
+  const strDate = date.getDate()
+
+  const clean = value => (value >= 1 && value <= 9 ? '0' + value : value)
+
+  return (
+    date.getFullYear() +
+    seperator +
+    clean(nowMonth) +
+    seperator +
+    clean(strDate)
+  )
+}
+```
+
+### 是否是有效图片地址
+
+```js
+export function getImgSrc(src) {
+  let img = document.createElement('img')
+  img.src = src
+  return new Promise(function (resolve, reject) {
+    img.onerror = () => {
+      resolve(void 0)
+    }
+    img.onload = () => {
+      resolve(src)
+    }
+  })
+}
+```
+
 ### 获取文件后缀名
 
 使用场景：上传文件判断后缀名

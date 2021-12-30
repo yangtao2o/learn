@@ -1,7 +1,9 @@
 import { extend } from 'umi-request'
 import store from '@/store'
-import { onLogout, onLogon } from '@/store/modules/user.js'
-import { accountLoginService } from '@kxhz/user-service-sdk'
+import { onLogout, setToken } from '@/store/modules/user.js'
+import { get_new_token } from '@api/token'
+import { localStorageHandle, ACCOUNT_TOKEN } from '@/utils/storage'
+import { getAppId } from '@/utils/getAppId'
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -21,9 +23,6 @@ const codeMessage = {
   504: '网关超时。',
 }
 
-/**
- * Error Handler
- */
 const errorHandler = error => {
   const { response, data } = error
   if (response && response.status) {
@@ -33,11 +32,6 @@ const errorHandler = error => {
       message: `请求错误 ${status}: ${url}`,
       description: errorText,
     })
-  } else if (!response) {
-    console.error({
-      message: '网络异常',
-      description: '您的网络发生异常，无法连接服务器',
-    })
   }
   if (data && data.code && data.message) {
     console.error('Response Data', {
@@ -45,7 +39,21 @@ const errorHandler = error => {
       message: data.message,
     })
   }
-  return response
+  // return response   // 如果要拦截报错信息，统一处理，可返回 response
+  return data
+}
+
+const getToken = () =>
+  localStorageHandle.get(ACCOUNT_TOKEN)
+    ? localStorageHandle.get(ACCOUNT_TOKEN)
+    : {}
+
+// 默认统一从本地存储中获取token
+const getAuthor = () => {
+  const { access_token } = getToken()
+  const res = access_token ? `Bearer ${access_token}` : ''
+
+  return { Authorization: res }
 }
 
 /**
@@ -53,26 +61,20 @@ const errorHandler = error => {
  */
 
 const resquestHandler = (url, options) => {
-  const { Authorization } = options.headers
-  const { access_token } = store.getState().user.token
-
-  // 注意可以跨域的字段，详细内容可通过 Response Headers 的 Access-Control-** 去匹配
-  let headers = access_token && {
-    Authorization: `Bearer ${access_token}`,
-  }
-  if (Authorization) {
-    headers = { Authorization }
-  }
+  const appId = getAppId()
+  const author = getAuthor()
 
   return {
     url,
     options: {
       ...options,
       headers: {
+        appId,
         ...options.headers,
-        ...headers,
+        ...author,
       },
       interceptors: true,
+      credentials: 'omit', // 'omit: Never send or receive cookies', 'same-origin' is default
     },
   }
 }
@@ -86,7 +88,7 @@ const resquestHandler = (url, options) => {
 let isRefreshing = false // 是否正在刷新
 const subscribers = [] // 重试队列，每一项将是一个待执行的函数形式
 
-const addSubscriber = listener => listeners.push(listener)
+const addSubscriber = listener => subscribers.push(listener)
 
 // 执行被缓存等待的接口事件
 const notifySubscriber = (newToken = '') => {
@@ -96,13 +98,18 @@ const notifySubscriber = (newToken = '') => {
 
 // 刷新 token 请求
 const refreshTokenRequst = async () => {
-  const { refresh_token } = store.getState().user.token
+  const { refresh_token } = getToken()
   try {
-    const res = await accountLoginService.get_new_token(refresh_token)
-    store.dispatch(onLogon(res))
-    notifySubscriber(res.access_token)
+    const res = await get_new_token(refresh_token)
+
+    if (res && res.access_token) {
+      store().dispatch(setToken(res))
+      notifySubscriber(res.access_token)
+    } else {
+      notifySubscriber()
+    }
   } catch (e) {
-    console.error('请求刷新 token 失败')
+    notifySubscriber()
   }
   isRefreshing = false
 }
@@ -110,6 +117,7 @@ const refreshTokenRequst = async () => {
 // 判断如何响应
 function checkStatus(response, options) {
   const { url } = response
+
   if (!isRefreshing) {
     isRefreshing = true
     refreshTokenRequst()
@@ -119,29 +127,21 @@ function checkStatus(response, options) {
   return new Promise(resolve => {
     // 将resolve放进队列，用一个函数形式来保存，等token刷新后直接执行
     addSubscriber(newToken => {
-      const newOptions = {
-        ...options,
-        prefix: '',
-        params: {},
-        headers: {
-          Authorization: 'Bearer ' + newToken,
-        },
+      if (newToken) {
+        const newOptions = {
+          ...options,
+          prefix: '',
+          params: {},
+          headers: {
+            Authorization: 'Bearer ' + newToken,
+          },
+        }
+        resolve(request(url, newOptions))
+      } else {
+        resolve()
       }
-      resolve(request(url, newOptions))
     })
   })
-}
-
-// 部分页面的特殊处理：tpl页面操作时被迫退出时，不返回首页
-function hackResponse(url = '') {
-  const targetReqUrl = ['template/details', 'template/operate']
-  const res = targetReqUrl.findIndex(elem => url.indexOf(elem))
-
-  if (res !== -1) {
-    window.location.reload()
-    return true
-  }
-  return false
 }
 
 /**
@@ -149,16 +149,27 @@ function hackResponse(url = '') {
  */
 
 const responseHandler = async (response, options) => {
-  const res = await response.clone().json()
-
-  if (res.code === 1200) {
-    return checkStatus(response, options)
-  } else if (res.code === 1201) {
-    let isBack = true
-    if (hackResponse(response.url)) {
-      isBack = false
+  try {
+    if (typeof response.clone === 'function') {
+      // 捕获 body 可能为空的情况，直接跳出判断，正常返回即可
+      const res = await response.clone().json()
+      if (res.code === 1200) {
+        return checkStatus(response, options)
+      } else if (res.code === 1201) {
+        /**
+         * 由于刷新token需时间加上浏览请求并发
+         * 可能会有刷新token成功前另一个业务请求
+         * 如果正在刷新token按处理正在刷新的逻辑处理
+         */
+        if (!isRefreshing) {
+          store().dispatch(onLogout())
+        } else {
+          return checkStatus(response, options)
+        }
+      }
     }
-    return store.dispatch(onLogout(isBack))
+  } catch (error) {
+    // console.error('ResponseHandler Error:', error)
   }
 
   return response
@@ -169,10 +180,9 @@ const responseHandler = async (response, options) => {
  */
 
 const request = extend({
-  prefix: process.env.NEXT_PUBLIC_ZHIXI_API_HOST,
-  timeout: 5000,
+  prefix: process.env.API_Host,
+  timeout: 15000,
   headers: {
-    appId: '80001001',
     'Cache-Control': 'no-cache',
     Pragma: 'no-cache', // 兼容 IE11
   },
@@ -180,17 +190,8 @@ const request = extend({
 })
 
 // request interceptor, change url or options.
-request.interceptors.request.use(resquestHandler)
+request.interceptors.request.use(resquestHandler, { global: false })
 // response interceptor, chagne response
-request.interceptors.response.use(responseHandler)
+request.interceptors.response.use(responseHandler, { global: false })
 
-const requestHost = extend({
-  prefix: '',
-  timeout: 5000,
-  headers: {
-    appId: '80001001',
-  },
-  errorHandler,
-})
-
-export { request, requestHost }
+export { request }
