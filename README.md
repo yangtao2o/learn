@@ -79,35 +79,21 @@
 - [再聊移动端页面的适配](https://juejin.im/entry/5a619c62518825734a74c2cc#comment)
 - [关于移动端适配，你必须要知道的](https://juejin.im/post/5cddf289f265da038f77696c) --- 非常详细
 
-## Vue
-
-### 2019
-
-- [30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）](https://juejin.im/post/5d59f2a451882549be53b170)
-- [Vue 应用性能优化指南](https://juejin.im/post/5b960fcae51d450e9d645c5f)
-- [【图文并茂，点赞收藏哦！】重学巩固你的 Vuejs 知识体系](https://juejin.im/post/5e6e2a5a5188254974680f6a)
-- [「进击的前端工程师」从源码解读 Vue 生命周期，让面试官对你刮目相看](https://juejin.im/post/5d1b464a51882579d824af5b)
-- [「面试题」20+Vue 面试题整理 🔥(持续更新)](https://juejin.im/post/5e649e3e5188252c06113021)
-- [Vue 组件间通信六种方式（完整版）](https://juejin.im/post/5cde0b43f265da03867e78d3)
-- [Vue 开发必须知道的 36 个技巧【近 1W 字】](https://juejin.im/post/5d9d386fe51d45784d3f8637)
-- [Vue.js 技术揭秘](https://ustbhuangyi.github.io/vue-analysis/)
-- [深入实践 ES6 Proxy & Reflect](https://zhuanlan.zhihu.com/p/60126477)
-
-#### 掘金小册
-
-- [Vue 项目构建与开发入门](https://juejin.im/book/5b23a5aef265da59716fda09)
-- [Vue.js 组件精讲](https://juejin.im/book/5bc844166fb9a05cd676ebca) —— Aresn，基于 Vue.js 的开源 UI 组件库 — iView 的作者（GitHub 超过 18000 星）
-
-#### 视频
-
-- [Vue+Webpack 打造 todo 应用](https://www.imooc.com/learn/935) - _Jokcy_
-- [Vue 全家桶+SSR+Koa2 全栈开发美团网](https://coding.imooc.com/learn/list/280.html) - _快乐动起来呀_，付费视频
-- [Vue.js2.5+cube-ui 重构饿了么 App](https://coding.imooc.com/learn/list/74.html) - _ustbhuangyi_ 中级，掌握 Vue 最全版本应用与迭代，打造极致流畅的 WebApp，付费视频
-- [Vue2.0 开发企业级移动端音乐 Web App](https://coding.imooc.com/class/107.html) - _ustbhuangyi_ 高级，付费视频
-- [Vue.js 源码全方位深入解析 （含 Vue3.0 源码分析）](https://coding.imooc.com/class/228.html) - _ustbhuangyi_， 付费视频
-- [Vue.js 技术揭秘](https://ustbhuangyi.github.io/vue-analysis/v2/prepare/) - 视频配套文档
-
 ## React
+
+### 2021 Hooks
+
+- [React.js 小书](https://hyf.js.org/react-naive-book/)，Github 地址：[
+  react-naive-book](https://github.com/huzidaha/react-naive-book)
+- [React Hooks - 30secondsofcode](https://www.30secondsofcode.org/react/t/hooks/p/1) - 常用比较小的钩子片段，直接用
+- [ahooks](https://ahooks.js.org/zh-CN) - 阿里旗下的
+- [react-use](https://github.com/streamich/react-use) - 全球最大的...
+- [Build your own React](https://pomb.us/build-your-own-react/)
+
+### SSR
+
+- [React 中同构（SSR）原理脉络梳理](https://zhuanlan.zhihu.com/p/47044039)
+- [从零开始，揭秘 React 服务端渲染核心技术](https://segmentfault.com/a/1190000019916830)
 
 ### 2019
 
@@ -141,6 +127,34 @@
 - [React 源码解析](https://react.jokcy.me)- 视频配套文档
 - [React16 免费视频教程（共 28 集）](http://jspang.com/posts/2019/05/04/new-react-base.html) - _技术胖_
 - [前端要学的测试课 从 Jest 入门到 TDD/BDD 双实战](https://coding.imooc.com/learn/list/372.html) - 以 Vue/React 项目进行实战，更适合前端工程师学习的测试课程，付费视频
+
+## Vue
+
+### 2019
+
+- [30 道 Vue 面试题，内含详细讲解（涵盖入门到精通，自测 Vue 掌握程度）](https://juejin.im/post/5d59f2a451882549be53b170)
+- [Vue 应用性能优化指南](https://juejin.im/post/5b960fcae51d450e9d645c5f)
+- [【图文并茂，点赞收藏哦！】重学巩固你的 Vuejs 知识体系](https://juejin.im/post/5e6e2a5a5188254974680f6a)
+- [「进击的前端工程师」从源码解读 Vue 生命周期，让面试官对你刮目相看](https://juejin.im/post/5d1b464a51882579d824af5b)
+- [「面试题」20+Vue 面试题整理 🔥(持续更新)](https://juejin.im/post/5e649e3e5188252c06113021)
+- [Vue 组件间通信六种方式（完整版）](https://juejin.im/post/5cde0b43f265da03867e78d3)
+- [Vue 开发必须知道的 36 个技巧【近 1W 字】](https://juejin.im/post/5d9d386fe51d45784d3f8637)
+- [Vue.js 技术揭秘](https://ustbhuangyi.github.io/vue-analysis/)
+- [深入实践 ES6 Proxy & Reflect](https://zhuanlan.zhihu.com/p/60126477)
+
+#### 掘金小册
+
+- [Vue 项目构建与开发入门](https://juejin.im/book/5b23a5aef265da59716fda09)
+- [Vue.js 组件精讲](https://juejin.im/book/5bc844166fb9a05cd676ebca) —— Aresn，基于 Vue.js 的开源 UI 组件库 — iView 的作者（GitHub 超过 18000 星）
+
+#### 视频
+
+- [Vue+Webpack 打造 todo 应用](https://www.imooc.com/learn/935) - _Jokcy_
+- [Vue 全家桶+SSR+Koa2 全栈开发美团网](https://coding.imooc.com/learn/list/280.html) - _快乐动起来呀_，付费视频
+- [Vue.js2.5+cube-ui 重构饿了么 App](https://coding.imooc.com/learn/list/74.html) - _ustbhuangyi_ 中级，掌握 Vue 最全版本应用与迭代，打造极致流畅的 WebApp，付费视频
+- [Vue2.0 开发企业级移动端音乐 Web App](https://coding.imooc.com/class/107.html) - _ustbhuangyi_ 高级，付费视频
+- [Vue.js 源码全方位深入解析 （含 Vue3.0 源码分析）](https://coding.imooc.com/class/228.html) - _ustbhuangyi_， 付费视频
+- [Vue.js 技术揭秘](https://ustbhuangyi.github.io/vue-analysis/v2/prepare/) - 视频配套文档
 
 ## 小程序
 
