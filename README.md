@@ -76,8 +76,9 @@
 - 《CSS 权威指南》- 不推荐一上来就《CSS 权威指南》，平时学习工作查询 MDN 足矣
 - [前端基础篇之 CSS 世界](https://juejin.im/post/5ce607a7e51d454f6f16eb3d)
 - [CSS 常见布局方式](https://juejin.im/post/599970f4518825243a78b9d5)
-- [再聊移动端页面的适配](https://juejin.im/entry/5a619c62518825734a74c2cc#comment)
+- [前端响应式布局原理与方案（详细版）](https://juejin.cn/post/6844903814332432397)
 - [关于移动端适配，你必须要知道的](https://juejin.im/post/5cddf289f265da038f77696c) --- 非常详细
+- [中高级前端必须注意的 40 条移动端 H5 坑位指南 | 网易三年实践](https://juejin.cn/post/6921886428158754829)
 
 ## React
 
