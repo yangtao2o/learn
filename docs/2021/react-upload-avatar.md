@@ -97,11 +97,7 @@ export default function AvatarUpload(props) {
   return (
     <>
       <div className="avatar-box">
-        <Avatar
-          className="avatar"
-          icon={<img src={AVATAR_IMG} />}
-          src={avatarSrc}
-        />
+        <Avatar className="avatar" icon={<img src={AVATAR_IMG} />} src={avatarSrc} />
         <div className="upload-btn" onClick={() => setVisible(true)}>
           <CameraOutlined style={{ fontSize: 25 }} />
           <span className="desc">修改头像</span>
@@ -254,7 +250,6 @@ function uploadImageToOSS({ name, data, blob }) {
     policy,
     signature,
     OSSAccessKeyId: access_id,
-    'x-oss-content-type': 'text/plain', // OSS 配置固定为'text/plain'不能修改
     file: blob,
   }
 
