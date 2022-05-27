@@ -1,4 +1,4 @@
-# My Learning Books
+# My Learning Books <img src="https://img.shields.io/badge/%E5%A4%A7%E6%B6%9B%E5%AD%90-%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-66f.svg">
 
 <p align="center">
   <a href="https://www.yangtao.site/" target="_blank">
