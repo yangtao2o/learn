@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quill test</title>
+    <!-- Include stylesheet -->
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.css"
+      integrity="sha384-IKOookmJ6jaAbJnGdgrLG5MDmzxJmjkIm6XCFqxnhzuMbfkEhGQalwVq2sYnGyZM"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.js"
+      integrity="sha384-kSBEBJfG5+zZAKID5uvi6avDXnnOGLnbknFv6VMnVBrknlFw67TwFsY9PaD33zBI"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Quill</h1>
+
+    <!-- Create the editor container -->
+    <div id="editor">
+      <p>Hello World!</p>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><br /></p>
+    </div>
+    <div id="test123">
+      <ul class="ql-xxx">
+        <li>adsfadsf</li>
+        <li>dfadf</li>
+        <li class="abc cde aaa">gsafdadf</li>
+      </ul>
+    </div>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+    <script>
+      var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+          toolbar: {
+            container: [
+              [{ header: [1, 2, 3, false] }],
+              ['bold', 'italic', 'underline'],
+              [{ list: 'ordered' }, { list: 'bullet' }],
+              [{ color: [] }, { background: [] }],
+              [{ font: [] }, { align: [] }],
+              ['blockquote', 'code-block', 'formula', 'image', 'video'],
+              ['activity'],
+            ],
+          },
+        },
+      })
+      window.quill = quill
+      var delta = quill.getContents()
+      var length = quill.getLength()
+      console.log('getContents length', delta, length)
+
+      var text = quill.getText(0, 10)
+      console.log('getText', text)
+
+      // quill.insertText(15, 'Quill', {
+      //   color: 'red',
+      //   italic: true,
+      //   fontSize: 18,
+      // })
+
+      quill.on('text-change', function (delta, oldDelta, source) {
+        if (source == 'api') {
+          console.log('An API call triggered this change.')
+        } else if (source == 'user') {
+          console.log('A user action triggered this change.')
+        }
+      })
+
+      quill.on('selection-change', function (range, oldRange, source) {
+        if (range) {
+          if (range.length == 0) {
+            console.log('User cursor is on', range.index, source)
+            var text = quill.getText(range.index, 10)
+            quill.setSelection(range.index, 10)
+            console.log(text)
+          } else {
+            var text = quill.getText(range.index, range.length)
+            console.log('User has highlighted', text)
+          }
+        } else {
+          console.log('Cursor not in the editor')
+        }
+      })
+
+      quill.on('editor-change', function (eventName, ...args) {
+        console.log(eventName)
+        if (eventName === 'text-change') {
+          // args[0] will be delta
+        } else if (eventName === 'selection-change') {
+          // args[0] will be old range
+        }
+      })
+
+      const findNodeParents = (current, parentNode, stopNode) => {
+        let matched = []
+        let cur = current.parentNode
+        let isStop = (cur) =>
+          (stopNode && stopNode === cur) || cur.nodeType === 9
+
+        while (cur && !isStop(cur)) {
+          if (cur.nodeType === 1 && cur === parentNode) {
+            matched.push(cur)
+          }
+          cur = cur.parentNode
+        }
+        return matched
+      }
+
+      const result = findNodeParents(
+        document.querySelector('.abc'),
+        document.querySelector('.ql-xxx'),
+        document.querySelector('#test123')
+      )
+      console.log(result)
+    </script>
+  </body>
+</html>
