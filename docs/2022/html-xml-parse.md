@@ -13,6 +13,10 @@
 - dayjs
 - image-size
 
+其他：
+
+- 读取以及设置 File 文件
+
 ## 使用案例
 
 ### fast-xml-parser
@@ -168,4 +172,40 @@ http.get(options, function (response) {
       console.log(sizeOf(buffer));
     });
 });
+```
+
+### 读取 File 内容
+
+```js
+const readFileContent = (file) => {
+  return new Promise((reslove, rejects) => {
+    const reader = new FileReader();
+
+    reader.readAsText(file, "utf-8");
+
+    reader.onload = function (evt) {
+      const value = evt.target.result;
+      reslove(value);
+    };
+
+    reader.onerror = function (err) {
+      rejects(err);
+    };
+  });
+};
+```
+
+### 设置 File 内容
+
+```js
+/**
+ * @param {String} details
+ * @param {File} file
+ * @returns
+ */
+const setFileContent = (details = "", file = {}) => {
+  const { name, type } = file;
+
+  return new File([details], name, { type });
+};
 ```
