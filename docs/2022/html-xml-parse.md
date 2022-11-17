@@ -174,6 +174,32 @@ http.get(options, function (response) {
 });
 ```
 
+获取图片真实大小，超出最大值，设置同等比例高度大小：
+
+```js
+/**
+ * 获取图片真实大小
+ * @param path 图片路径
+ * @param img 图片属性
+ * @returns
+ */
+function getImgSize(path: string, img: imgSize): imgSize {
+  const MAX_WIDTH = 600;
+  const size = { width: img.width, height: img.height };
+  const { width, height } = sizeOf(path);
+
+  if (width && height) {
+    // 超过最大值
+    if (width >= MAX_WIDTH) {
+      size.width = MAX_WIDTH;
+      size.height = Math.ceil((MAX_WIDTH / width) * height);
+    }
+  }
+
+  return size;
+}
+```
+
 ### 读取 File 内容
 
 ```js
